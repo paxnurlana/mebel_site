@@ -33,6 +33,8 @@
     <symbol id="i-arrow" viewBox="0 0 24 24"><path d="M5 12h14m-5-5 5 5-5 5"/></symbol>
     <symbol id="i-back" viewBox="0 0 24 24"><path d="M19 12H5m5-5-5 5 5 5"/></symbol>
     <symbol id="i-message" viewBox="0 0 24 24"><path d="M21 15a4 4 0 0 1-4 4H8l-5 3V7a4 4 0 0 1 4-4h10a4 4 0 0 1 4 4v8Z"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="M12 3 20 6v5c0 5-3.4 8.6-8 10-4.6-1.4-8-5-8-10V6l8-3Z"/><path d="m8.5 12 2.2 2.2 4.8-5"/></symbol>
+    <symbol id="i-whatsapp" viewBox="0 0 24 24"><path d="M20.5 11.8a8.4 8.4 0 0 1-12.4 7.4L3.5 20.5l1.3-4.4a8.4 8.4 0 1 1 15.7-4.3Z"/><path d="M8.4 7.6c.2-.4.4-.4.7-.4h.5c.2 0 .4.1.5.4l.8 1.8c.1.3.1.5 0 .7l-.5.6c-.2.2-.2.4 0 .6.5.9 1.2 1.6 2.1 2.1.2.1.4.1.6 0l.6-.5c.2-.1.4-.1.7 0l1.8.8c.3.1.4.3.4.5v.5c0 .3-.1.5-.4.7-.4.2-.9.3-1.4.2-1-.2-2.2-.9-3.5-2.1-1.2-1.2-1.9-2.4-2.1-3.5-.1-.5 0-1 .2-1.4Z"/></symbol>
   </svg>
 
   <header class="topbar" id="topbar">
@@ -153,7 +155,7 @@
         <p id="priceHeadline">Точная цена зависит от размеров, материалов и комплектации.</p>
       </div>
       <a class="btn-whatsapp" id="waMainBtn" href="#" target="_blank" rel="noopener">
-        <svg><use href="#i-message"/></svg> Обсудить бесплатный замер в WhatsApp
+        <svg><use href="#i-whatsapp"/></svg> Обсудить бесплатный замер в WhatsApp
       </a>
       <div class="reference-card">
         <div><span>Есть референс?</span><h3>Пришлите идею — адаптируем её под ваше пространство</h3></div>
@@ -167,10 +169,6 @@
       <div class="buyer-avatars" aria-hidden="true"><span>А</span><span>М</span><span>Д</span></div>
       <span>Уже <strong>127 семей</strong> доверили нам изготовление мебели</span>
     </div>
-    <div class="rating" aria-label="Рейтинг 4.9 из 5">
-      <span class="rating-stars"><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg><svg><use href="#i-star"/></svg></span>
-      <strong>4.9</strong>
-    </div>
   </aside>
 
   <div class="warming" id="warming">
@@ -181,25 +179,35 @@
         <p>Мы проектируем мебель с учётом архитектуры помещения, сценариев жизни и общего характера интерьера.</p>
       </div>
       <div class="stats">
-        <div><strong>500+</strong><span>реализованных проектов</span></div>
-        <div><strong>10 лет</strong><span>гарантии на мебель</span></div>
-        <div><strong>30 / 70</strong><span>удобная схема оплаты</span></div>
+        <div><svg><use href="#i-house"/></svg><strong>Проект под вас</strong><span>Учитываем планировку, привычки и стиль интерьера</span></div>
+        <div><svg><use href="#i-layers"/></svg><strong>Продумано в деталях</strong><span>Материалы, фурнитура и наполнение — без случайных решений</span></div>
+        <div><svg><use href="#i-check"/></svg><strong>От замера до монтажа</strong><span>Берём на себя весь путь и остаёмся на связи</span></div>
       </div>
     </section>
 
+    <section class="reference-banner content-section">
+      <div class="reference-copy">
+        <span class="section-label">Есть референс?</span>
+        <h2>Мы реализуем любое желание</h2>
+        <p>Нашли красивую мебель в интернете — просто скиньте фото. Сделаем точно такой же дизайн под размеры вашей комнаты.</p>
+        <a class="btn-whatsapp" href="https://wa.me/77766387416" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Отправить менеджеру свой дизайн</a>
+      </div>
+      <div class="reference-visual"><img src="assets/categories/kitchen.png" alt="Пример мебели на заказ"></div>
+    </section>
+
     <section class="portfolio-section content-section">
-      <header><span class="section-label">Реализованные проекты</span><h2>Интерьеры, в которых всё на своём месте</h2></header>
+      <header><span class="section-label">Портфолио</span><h2>Реализованные проекты</h2></header>
       <div class="portfolio-track" id="portfolioCarousel"></div>
     </section>
 
     <section class="process-section content-section">
-      <div class="section-copy"><span class="section-label">Понятный процесс</span><h2>От первого разговора до финального монтажа</h2><p>Каждый этап прозрачен: вы заранее понимаете, что происходит, сколько это займёт и какой результат получите.</p></div>
+      <div class="section-copy"><span class="section-label">Без хаоса и сюрпризов</span><h2>Процесс работы с нами</h2><p>Фиксируем каждый этап и сроки заранее: вы понимаете, что происходит сегодня и когда мебель будет у вас дома.</p></div>
       <div class="process-list" id="processSteps"></div>
     </section>
 
     <section class="payment-section content-section">
       <div><span class="section-label">Безопасная оплата</span><h2>Основная сумма — после установки</h2><p>30% вносится на старте производства. Остальные 70% — после монтажа и проверки мебели у вас дома.</p></div>
-      <div class="payment-visual"><div><strong>30%</strong><span>на старте</span></div><i></i><div><strong>70%</strong><span>после установки</span></div></div>
+      <div class="payment-visual"><div><strong>30%</strong><span>на старте производства</span></div><i class="payment-lock"><svg><use href="#i-shield"/></svg></i><div><strong>70%</strong><span>после монтажа и проверки</span></div></div>
     </section>
 
     <section class="reviews-section content-section">
@@ -212,11 +220,22 @@
       <div id="faqList"></div>
     </section>
 
+    <section class="guarantee-section content-section">
+      <span class="section-label">Почему нам доверяют</span>
+      <h2>Красиво в визуализации. Точно в реальности.</h2>
+      <div class="guarantee-grid">
+        <article><span class="guarantee-icon"><svg><use href="#i-check"/></svg></span><strong>Фиксируем всё в договоре</strong><p>Сроки, материалы, комплектация и стоимость понятны до старта.</p></article>
+        <article><span class="guarantee-icon"><svg><use href="#i-layers"/></svg></span><strong>Контролируем качество</strong><p>Проверяем мебель перед доставкой и после монтажа у вас дома.</p></article>
+        <article><span class="guarantee-icon"><svg><use href="#i-shield"/></svg></span><strong>Даём гарантию</strong><p>Остаёмся рядом и после установки — мебель должна радовать годами.</p></article>
+        <article><span class="guarantee-icon"><svg><use href="#i-house"/></svg></span><strong>Собираем под ваш дом</strong><p>Не продаём шаблон: проектируем мебель под ваш образ жизни.</p></article>
+      </div>
+    </section>
+
     <section class="final-cta content-section">
-      <span class="section-label">Следующий шаг</span>
-      <h2>Обсудим ваше пространство и подготовим точную смету</h2>
-      <p>Замер занимает около 40 минут и ни к чему не обязывает.</p>
-      <a class="btn-whatsapp" href="https://wa.me/77766387416" target="_blank" rel="noopener"><svg><use href="#i-message"/></svg> Написать в WhatsApp</a>
+      <div class="final-cta-card">
+        <div><span class="section-label">Ваш следующий шаг</span><h2>Расскажите о своей идее — мы превратим её в мебель, которая будет вашей.</h2><p>Начните с короткого сообщения в WhatsApp. Менеджер ответит, сориентирует по стоимости и согласует бесплатный замер.</p><a class="btn-whatsapp" href="https://wa.me/77766387416" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Написать в WhatsApp</a></div>
+        <img src="assets/categories/vanity.png" alt="Мебель на заказ">
+      </div>
     </section>
   </div>
 

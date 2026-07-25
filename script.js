@@ -49,11 +49,12 @@ const CATEGORIES={
     step3:[{id:'light',label:'Подсветка'},{id:'cable-channel',label:'Кабель-канал'},{id:'glass-shelves',label:'Стеклянные полки'},{id:'stand',label:'Подставка'}]}
 };
 const PROCESS_STEPS=[
-  {title:'Заявка и консультация',text:'Обсуждаем задачу, пожелания и ориентир по бюджету.'},
-  {title:'Бесплатный замер',text:'Фиксируем размеры, коммуникации и особенности помещения.'},
-  {title:'3D-проект и смета',text:'Согласовываем конструкцию, материалы и точную стоимость.'},
-  {title:'Производство',text:'Изготавливаем мебель после утверждения проекта.'},
-  {title:'Доставка и монтаж',text:'Устанавливаем мебель и проверяем каждый узел.'}
+  {time:'День 1',title:'Заявка и консультация',text:'Обсуждаем идею, пожелания и ориентир по бюджету.'},
+  {time:'День 2',title:'Бесплатный замер',text:'Фиксируем размеры, коммуникации и особенности помещения.'},
+  {time:'День 3',title:'Проект и точная смета',text:'Согласовываем конструкцию, материалы, наполнение и стоимость.'},
+  {time:'День 4',title:'Договор и оплата',text:'Фиксируем проект, сроки, комплектацию и запускаем заказ.'},
+  {time:'Дни 5–15',title:'Производство',text:'Изготавливаем мебель по утверждённому проекту.'},
+  {time:'День 15',title:'Доставка и монтаж',text:'Устанавливаем мебель и проверяем каждый узел вместе с вами.'}
 ];
 const REVIEWS=[
   {who:'Айгерим Т.',where:'ЖК Green Line, Алматы',text:'Кухня получилась ровно как в проекте. Особенно понравилось, что материалы показали заранее и стоимость после согласования не менялась.'},
@@ -262,12 +263,12 @@ function renderWarming(){
   const process=document.getElementById('processSteps');
   PROCESS_STEPS.forEach((item,index)=>{
     const row=document.createElement('article');row.className='process-item';
-    row.innerHTML=`<b>0${index+1}</b><div><h3>${item.title}</h3><p>${item.text}</p></div>`;process.appendChild(row);
+    row.innerHTML=`<b>0${index+1}</b><div><span class="process-time">${item.time}</span><h3>${item.title}</h3><p>${item.text}</p></div>`;process.appendChild(row);
   });
   const reviews=document.getElementById('reviewsList');
   REVIEWS.forEach(item=>{
     const card=document.createElement('article');card.className='review';
-    card.innerHTML=`<strong>${item.who}</strong><small>${item.where}</small><p>${item.text}</p>`;reviews.appendChild(card);
+    card.innerHTML=`<div class="review-media"><span>Фото клиента</span></div><div class="review-body"><strong>${item.who}</strong><small>${item.where}</small><p>${item.text}</p></div>`;reviews.appendChild(card);
   });
   const faq=document.getElementById('faqList');
   FAQ.forEach(item=>{
