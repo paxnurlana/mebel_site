@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>МЕБЕЛЬ ПРО — дизайн-концепт конфигуратора</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root{--paper:#f5f2ec;--white:#fffdfa;--ink:#20211f;--muted:#75736e;--line:#ded8ce;--wood:#9a6245;--wood-soft:#eee4da;--wa:#25d366;}
+    *{box-sizing:border-box} body{margin:0;background:var(--paper);color:var(--ink);font-family:Manrope,Arial,sans-serif;-webkit-font-smoothing:antialiased}
+    button{font:inherit} .shell{width:min(1180px,calc(100% - 40px));margin:auto}.bar{height:78px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}
+    .brand{letter-spacing:.08em;font-size:13px;font-weight:800}.brand b{color:var(--wood)}.note{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+    main{padding:44px 0 72px}.progress{display:flex;align-items:center;gap:12px;margin-bottom:34px}.track{height:2px;flex:1;background:#dcd5ca}.fill{width:57%;height:100%;background:var(--wood)}.progress span{font-size:12px;color:var(--muted);white-space:nowrap}
+    .layout{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(320px,.9fr);gap:58px;align-items:start}.eyebrow{margin:0 0 14px;color:var(--wood);font-size:11px;font-weight:800;text-transform:uppercase;letter-spacing:.13em}.title{margin:0;max-width:620px;font-size:clamp(30px,4vw,52px);line-height:1.08;letter-spacing:-.055em}.lead{max-width:545px;margin:20px 0 34px;color:#5c5b57;font-size:15px;line-height:1.65}
+    .cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.choice{appearance:none;border:1px solid var(--line);background:var(--white);padding:0;border-radius:15px;text-align:left;overflow:hidden;cursor:pointer;transition:transform .2s,border-color .2s,box-shadow .2s}.choice:hover{transform:translateY(-3px);box-shadow:0 14px 28px rgba(39,32,24,.08)}.choice.selected{border:2px solid var(--wood);box-shadow:0 0 0 3px rgba(154,98,69,.13)}
+    .choice img{display:block;width:100%;aspect-ratio:1.02;object-fit:cover}.choice .cap{display:flex;justify-content:space-between;align-items:center;padding:14px 15px 16px;font-size:14px;font-weight:700}.plan{color:var(--muted);font-size:10px;font-weight:800;letter-spacing:.08em;text-transform:uppercase}.placeholder{aspect-ratio:1.02;background:#e9e3da;position:relative;overflow:hidden}.placeholder:before,.placeholder:after{content:"";position:absolute;border:1px solid rgba(154,98,69,.55)}.placeholder:before{inset:25% 18% 24% 18%;border-bottom:0}.placeholder:after{height:30%;left:18%;right:38%;bottom:24%;border-top:0}.island:after{height:16%;left:32%;right:32%;bottom:18%;border:1px solid rgba(154,98,69,.55)}
+    .aside{position:sticky;top:24px;padding:25px;background:var(--white);border:1px solid var(--line);border-radius:18px}.aside h2{margin:2px 0 18px;font-size:16px;letter-spacing:-.02em}.summary-img{width:100%;aspect-ratio:1.15;object-fit:cover;border-radius:10px}.summary-label{margin:18px 0 8px;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);font-weight:800}.summary-title{margin:0;font-size:24px;letter-spacing:-.045em}.chips{display:flex;flex-wrap:wrap;gap:7px;margin:17px 0 22px}.chip{border:1px solid var(--line);padding:7px 10px;border-radius:99px;font-size:11px;color:#575651}.chip.active{border-color:#c8a995;background:var(--wood-soft);color:#74452e;font-weight:700}.estimate{border-top:1px solid var(--line);padding-top:18px;margin-top:6px}.estimate small{display:block;font-size:11px;color:var(--muted);margin-bottom:4px}.estimate b{font-size:22px;letter-spacing:-.05em}.estimate p{font-size:11px;line-height:1.5;color:var(--muted);margin:6px 0 0}.whatsapp{margin-top:22px;width:100%;border:0;border-radius:10px;background:var(--wa);color:#103a22;font-weight:800;padding:15px;display:flex;align-items:center;justify-content:center;gap:9px;cursor:pointer}.wa-icon{width:18px;height:18px;border:2px solid currentColor;border-radius:50%;display:inline-grid;place-items:center;font-size:11px}.back{border:0;background:none;color:#6e6b66;padding:0;margin-top:18px;font-size:12px;cursor:pointer}
+    .foot{display:flex;gap:18px;align-items:flex-start;border-top:1px solid var(--line);margin-top:60px;padding-top:20px;color:var(--muted);font-size:12px;line-height:1.55}.num{font-size:11px;color:var(--wood);font-weight:800;letter-spacing:.12em}
+    @media(max-width:760px){.shell{width:min(100% - 28px,620px)}.bar{height:65px}.note{display:none}main{padding-top:27px}.layout{grid-template-columns:1fr;gap:26px}.title{font-size:35px}.aside{position:static;order:-1}.aside h2{display:none}.summary-img{aspect-ratio:1.8}.cards{gap:10px}.choice .cap{padding:11px;font-size:12px}.plan{font-size:9px}.foot{margin-top:35px}}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <header class="bar"><div class="brand">МЕБЕЛЬ <b>ПРО</b></div><div class="note">Дизайн-концепт · конфигуратор</div></header>
+    <main>
+      <div class="progress"><div class="track"><div class="fill"></div></div><span>4 из 7</span></div>
+      <div class="layout">
+        <section>
+          <p class="eyebrow">Кухня · шаг 1</p>
+          <h1 class="title">Выберите планировку, которая подойдёт вашему пространству</h1>
+          <p class="lead">Это не точный проект, а первая дизайн-концепция. После замера дизайнер адаптирует её под размеры, коммуникации и ваш интерьер.</p>
+          <div class="cards" id="cards">
+            <button class="choice" data-name="Прямая кухня" data-img="assets/kitchen-straight-warm-minimal.png"><img src="assets/kitchen-straight-warm-minimal.png" alt="Прямая кухня"><span class="cap">Прямая <span class="plan">1 линия</span></span></button>
+            <button class="choice selected" data-name="П-образная кухня" data-img="assets/kitchen-u-warm-minimal.png"><img src="assets/kitchen-u-warm-minimal.png" alt="П-образная кухня"><span class="cap">П-образная <span class="plan">3 стороны</span></span></button>
+            <button class="choice" data-name="Угловая кухня" data-img="assets/kitchen-corner-warm-minimal.png"><img src="assets/kitchen-corner-warm-minimal.png" alt="Угловая кухня"><span class="cap">Угловая <span class="plan">2 стороны</span></span></button>
+            <button class="choice" data-name="Кухня с островом" data-img="assets/kitchen-u-warm-minimal.png"><span class="placeholder island" aria-hidden="true"></span><span class="cap">С островом <span class="plan">планировка</span></span></button>
+          </div>
+        </section>
+        <aside class="aside">
+          <h2>Ваша концепция</h2>
+          <img id="summaryImg" class="summary-img" src="assets/kitchen-u-warm-minimal.png" alt="Выбранная планировка кухни">
+          <div class="summary-label">Вы выбрали</div>
+          <p id="summaryTitle" class="summary-title">П-образная кухня</p>
+          <div class="chips"><span class="chip active">Тёплый минимализм</span><span class="chip">Дуб</span><span class="chip">Матовые фасады</span><span class="chip">Камень</span></div>
+          <div class="estimate"><small>Ориентир по проекту</small><b>от 1,2 млн ₸</b><p>Точную стоимость и сроки назовём после бесплатного замера.</p></div>
+          <button class="whatsapp"><span class="wa-icon">◔</span> Обсудить проект в WhatsApp</button>
+          <button class="back">← Вернуться к выбору мебели</button>
+        </aside>
+      </div>
+      <div class="foot"><span class="num">01</span><span>В итоговой версии визуалы стилей и опций будут дополнять выбранную планировку, а не подменять её случайным «готовым» рендером.</span></div>
+    </main>
+  </div>
+  <script>
+    document.querySelectorAll('.choice').forEach((card)=>card.addEventListener('click',()=>{
+      document.querySelectorAll('.choice').forEach((item)=>item.classList.remove('selected'));
+      card.classList.add('selected');
+      document.getElementById('summaryTitle').textContent=card.dataset.name;
+      if(card.dataset.img){document.getElementById('summaryImg').src=card.dataset.img;}
+    }));
+  </script>
+</body>
+</html>
