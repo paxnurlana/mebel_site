@@ -202,7 +202,7 @@ function submitForm(){
   document.getElementById('step-form').classList.remove('active');
   document.getElementById('topbar').style.display='none';
   document.getElementById('trustDock').classList.add('hidden');
-  setTimeout(()=>{document.getElementById('step-loading').classList.add('active');startLoading()},160);
+  setTimeout(()=>{renderResult();document.getElementById('step-result').classList.add('active');document.getElementById('warming').classList.add('visible');window.scrollTo({top:0,behavior:'smooth'})},520);
 }
 function startLoading(){
   const rows=[...document.querySelectorAll('#loadingList div')];let index=0;
@@ -221,10 +221,8 @@ function renderResult(){
   const cat=CATEGORIES[state.category];
   const form=cat.step1.find(item=>item.id===state.step1);
   const style=STYLES.find(item=>item.id===state.style);
-  const resultImg=document.getElementById('resultImg');resultImg.innerHTML='';
-  const imgPath=imageFor(state.category,'step1',state.step1)||imageFor(state.category,'step2',state.style);
-  if(imgPath){const img=document.createElement('img');img.src=imgPath;img.alt=`${cat.label}: ${form.label}`;resultImg.appendChild(img)}else resultImg.appendChild(placeholder());
-  document.getElementById('resultHeadline').textContent=`${state.name}, ваша концепция «${cat.label}» готова`;
+  const resultTitles={kitchen:'Концепция вашей кухни готова',wardrobe:'Концепция вашего шкафа готова','walkin-closet':'Концепция вашей гардеробной готова',bedroom:'Концепция вашей спальни готова',hallway:'Концепция вашей прихожей готова',vanity:'Концепция вашего туалетного столика готова',bathroom:'Концепция вашей мебели для ванной готова','tv-zone':'Концепция вашей ТВ-зоны готова'};
+  document.getElementById('resultHeadline').textContent=resultTitles[state.category]||'Концепция вашей мебели готова';
   document.getElementById('resultParams').innerHTML=[cat.label,form.label,style.label].map(x=>`<span class="badge">${x}</span>`).join('');
   const detailBox=document.getElementById('resultDetails');detailBox.innerHTML='';
   if(state.details.length){
@@ -257,7 +255,7 @@ function renderWarming(){
   const portfolio=document.getElementById('portfolioCarousel');
   for(let i=1;i<=8;i++){
     const card=document.createElement('article');card.className='case-card';
-    card.innerHTML=`<span class="photo-placeholder"></span><div class="case-info"><strong>Индивидуальный проект</strong><span>от ${850+(i-1)*120} 000 ₸ · ${10+i} дней</span></div>`;
+    card.innerHTML=`<img class="case-image" src="assets/kitchen-straight-warm-minimal.png" alt="Проект мебели"><div class="case-info"><strong>Индивидуальный проект</strong><span>от ${850+(i-1)*120} 000 ₸ · ${10+i} дней</span></div>`;
     portfolio.appendChild(card);
   }
   const process=document.getElementById('processSteps');
@@ -268,7 +266,7 @@ function renderWarming(){
   const reviews=document.getElementById('reviewsList');
   REVIEWS.forEach(item=>{
     const card=document.createElement('article');card.className='review';
-    card.innerHTML=`<div class="review-media"><span>Фото клиента</span></div><div class="review-body"><strong>${item.who}</strong><small>${item.where}</small><p>${item.text}</p></div>`;reviews.appendChild(card);
+    card.innerHTML=`<div class="review-media"><img src="assets/kitchen-straight-warm-minimal.png" alt="Проект клиента"></div><div class="review-body"><strong>${item.who}</strong><small>${item.where}</small><p>${item.text}</p></div>`;reviews.appendChild(card);
   });
   const faq=document.getElementById('faqList');
   FAQ.forEach(item=>{
