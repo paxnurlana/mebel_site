@@ -221,9 +221,6 @@ function renderResult(){
   const cat=CATEGORIES[state.category];
   const form=cat.step1.find(item=>item.id===state.step1);
   const style=STYLES.find(item=>item.id===state.style);
-  const resultImg=document.getElementById('resultImg');resultImg.innerHTML='';
-  const imgPath=imageFor(state.category,'step1',state.step1)||imageFor(state.category,'step2',state.style);
-  if(imgPath){const img=document.createElement('img');img.src=imgPath;img.alt=`${cat.label}: ${form.label}`;resultImg.appendChild(img)}else resultImg.appendChild(placeholder());
   document.getElementById('resultHeadline').textContent=`${state.name}, ваша концепция «${cat.label}» готова`;
   document.getElementById('resultParams').innerHTML=[cat.label,form.label,style.label].map(x=>`<span class="badge">${x}</span>`).join('');
   const detailBox=document.getElementById('resultDetails');detailBox.innerHTML='';
