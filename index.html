@@ -123,14 +123,30 @@
       </div>
     </section>
 
-        <section class="step loading-step" id="step-loading"><div class="smooth-loader" aria-label="Загрузка"><span></span><span></span><span></span><span></span></div><p class="loading-caption">Подбираем решение для вашего пространства</p></section>
+    <section class="step loading-step" id="step-loading">
+      <div class="loading-mark"><span></span><span></span><span></span></div>
+      <div class="step-label">Персональная подборка</div>
+      <h2>Создаём ваш проект</h2>
+      <p class="step-description">Собираем выбранные параметры в единую концепцию.</p>
+      <div class="loading-list" id="loadingList">
+        <div><i></i><span>Анализируем выбранную конфигурацию</span></div>
+        <div><i></i><span>Подбираем материалы и стиль</span></div>
+        <div><i></i><span>Формируем концепцию</span></div>
+        <div><i></i><span>Рассчитываем ориентировочную стоимость</span></div>
+      </div>
+    </section>
 
-        <section class="step result-step" id="step-result">
-      <div class="result-status"><div class="status-check"><svg><use href="#i-check"/></svg></div><div class="step-label">Персональная концепция готова</div><h2 id="resultHeadline">Ваша концепция готова</h2></div>
-      <div class="result-badges" id="resultParams"></div><div class="result-details" id="resultDetails"></div>
-      <div class="estimate"><span>Ориентировочная стоимость</span><strong id="priceValue">от 800 000 до 1 500 000 ₸</strong><p id="priceHeadline">Это предварительный ориентир. Точную конфигурацию и смету подготовим после бесплатного замера.</p></div>
-      <a class="btn-whatsapp" id="waMainBtn" href="#" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Обсудить бесплатный замер в WhatsApp</a>
-      <div class="reference-hero reference-hero--big"><div class="insta-mock"><div class="insta-mock-head"><span class="insta-avatar">🛋️</span><b>furniture_pro</b><span class="insta-dots">•••</span></div><div class="insta-mock-photo"><div class="insta-furniture-art"><span>✦</span></div></div></div><div class="reference-hero-body"><span class="section-label">Есть референс?</span><h3>Мы реализуем любую вашу фантазию</h3><p>Нашли красивую мебель в Pinterest, Instagram или Google — просто пришлите фото. Адаптируем дизайн один в один под размеры и материалы вашего пространства.</p><div class="reference-sources"><span>📌 Pinterest</span><span>📷 Instagram</span><span>🔍 Google</span></div><a class="btn-whatsapp" href="https://wa.me/77766387416?text=Здравствуйте!%20Хочу%20прислать%20референс%20мебели" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Отправить референс менеджеру</a></div></div>
+    <section class="step result-step" id="step-result">
+      <div id="resultImg" class="result-visual result-visual--hidden" aria-hidden="true"></div>
+      <div class="result-ready-icon" aria-hidden="true"><svg><use href="#i-check"/></svg></div>
+      <div class="step-label">Персональная концепция готова</div>
+      <h2 id="resultHeadline">Ваша концепция готова</h2>
+      <p class="step-description result-lead">Мы собрали ваши пожелания и подготовили предварительный ориентир по проекту.</p>
+      <div class="result-badges" id="resultParams"></div>
+      <div class="result-details" id="resultDetails"></div>
+      <div class="estimate estimate-light"><span>Ориентировочная стоимость</span><strong id="priceValue">от 800 000 до 1 500 000 ₸</strong><p id="priceHeadline">Предварительный диапазон. Точную стоимость определим после замера, проекта и согласования материалов.</p></div>
+      <a class="btn-whatsapp" id="waMainBtn" href="#" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Обсудить проект в WhatsApp</a>
+      <div class="reference-hero"><div class="reference-hero-art"><div class="reference-frame"><span class="reference-frame-top">@mebel.pro</span><div class="reference-furniture">✦</div><span class="reference-frame-caption">идея, которую хочется повторить</span></div></div><span class="section-label">Есть референс?</span><h3>Мы реализуем любую вашу фантазию</h3><p>Нашли красивую мебель в интернете — просто скиньте фото. Адаптируем идею под размеры вашей комнаты, материалы и реальный бюджет.</p><a class="btn-whatsapp" href="https://wa.me/77766387416?text=Здравствуйте!%20Хочу%20прислать%20референс%20мебели" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Отправить референс менеджеру</a></div>
     </section>
   </main>
 
@@ -154,7 +170,10 @@
       <div class="process-list" id="processSteps"></div>
     </section>
 
-            <section class="payment-section content-section"><div class="section-copy"><span class="section-label">Безопасная оплата</span><h2>Прозрачная схема — от договора до установки</h2><p>Каждый этап оплаты привязан к результату: вы платите за уже сделанную работу, а не за обещания.</p></div><div class="payment-chain"><div class="chain-step"><span class="chain-icon">📄</span><b>Договор</b><small>Фиксируем проект, сроки и стоимость</small></div><div class="chain-arrow">→</div><div class="chain-step"><span class="chain-icon">💰</span><b>Предоплата 30%</b><small>Запускаем производство</small></div><div class="chain-arrow">→</div><div class="chain-step"><span class="chain-icon">🛠️</span><b>Установка</b><small>Монтируем мебель у вас дома</small></div><div class="chain-arrow">→</div><div class="chain-step"><span class="chain-icon">✓</span><b>Оплата 70%</b><small>После проверки результата</small></div></div><a class="btn-whatsapp payment-whatsapp" href="https://wa.me/77766387416" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Уточнить условия оплаты</a></section><section class="reviews-section content-section">
+        <section class="payment-section content-section">
+      <div class="payment-copy"><span class="section-label">Понятные условия</span><h2>Оплата по-честному и без сюрпризов</h2><p>Сначала фиксируем проект и условия в договоре. Вы вносите предоплату, мы изготавливаем и устанавливаем мебель — оставшиеся 70% после того, как всё проверено на месте.</p></div>
+      <div class="payment-steps"><div class="payment-step"><b>01</b><div><strong>Договор</strong><span>Фиксируем проект, сроки и стоимость</span></div></div><div class="payment-step"><b>02</b><div><strong>30% предоплата</strong><span>Запускаем материалы и производство</span></div></div><div class="payment-step"><b>03</b><div><strong>Производство и монтаж</strong><span>Привозим и устанавливаем мебель</span></div></div><div class="payment-step payment-step--final"><b>04</b><div><strong>70% после приёмки</strong><span>Вы проверяете результат и оплачиваете остаток</span></div></div></div>
+    </section><section class="reviews-section content-section">
       <header><span class="section-label">Отзывы</span><h2>Что говорят владельцы наших проектов</h2></header>
       <div class="reviews-grid" id="reviewsList"></div>
     </section>
@@ -164,7 +183,7 @@
       <div id="faqList"></div>
     </section>
 
-            <section class="final-cta content-section"><div class="final-cta-simple"><span class="section-label">Готовы обсудить проект?</span><h2>Напишите нам — рассчитаем стоимость и согласуем бесплатный замер</h2><a class="btn-whatsapp" href="https://wa.me/77766387416" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Написать в WhatsApp</a></div></section>
+        <section class="guarantee-section content-section"><span class="section-label">Финальная уверенность</span><h2>Мебель, которой хочется пользоваться каждый день</h2><div class="guarantee-grid"><article><span class="guarantee-icon"><svg><use href="#i-check"/></svg></span><strong>Собираем под ваш дом</strong><p>Учитываем планировку, привычки и детали пространства.</p></article><article><span class="guarantee-icon"><svg><use href="#i-shield"/></svg></span><strong>Фиксируем договором</strong><p>Сроки, материалы и стоимость понятны ещё до старта.</p></article><article><span class="guarantee-icon"><svg><use href="#i-layers"/></svg></span><strong>Контролируем качество</strong><p>Проверяем мебель до доставки и после монтажа.</p></article><article><span class="guarantee-icon"><svg><use href="#i-house"/></svg></span><strong>Остаёмся на связи</strong><p>Помогаем и после установки, если появятся вопросы.</p></article></div></section>    <section class="final-cta content-section"><div class="final-cta-card"><div><span class="section-label">Готовы обсудить?</span><h2>Давайте создадим мебель, которая будет только вашей</h2><p>Напишите нам в WhatsApp — подскажем по материалам, сориентируем по бюджету и договоримся о замере.</p><a class="btn-whatsapp" href="https://wa.me/77766387416" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Написать менеджеру в WhatsApp</a></div></div></section>
   </div>
 
   <script src="script.js"></script>
