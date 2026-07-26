@@ -218,9 +218,9 @@ function startLoading(){
   },650);
 }
 function renderResult(){
-  const cat=CATEGORIES[state.category];
-  const form=cat.step1.find(item=>item.id===state.step1);
-  const style=STYLES.find(item=>item.id===state.style);
+  const cat=CATEGORIES[state.category]||CATEGORIES.kitchen;
+  const form=cat.step1.find(item=>item.id===state.step1)||cat.step1[0];
+  const style=STYLES.find(item=>item.id===state.style)||STYLES[0];
   document.getElementById('resultHeadline').textContent=`${state.name}, ваша концепция «${cat.label}» готова`;
   document.getElementById('resultParams').innerHTML=[cat.label,form.label,style.label].map(x=>`<span class="badge">${x}</span>`).join('');
   const detailBox=document.getElementById('resultDetails');detailBox.innerHTML='';
@@ -232,8 +232,8 @@ function renderResult(){
   }else detailBox.innerHTML='<div class="detail-mini">Без дополнительных опций</div>';
   const premium=state.cls==='business';
   document.getElementById('priceValue').textContent=premium?'от 1 500 000 до 3 000 000 ₸':'от 800 000 до 1 500 000 ₸';
-  const cls=CLASS_OPTIONS.find(item=>item.id===state.cls).label;
-  const urgency=URGENCY_OPTIONS.find(item=>item.id===state.urgency).label;
+  const cls=(CLASS_OPTIONS.find(item=>item.id===state.cls)||CLASS_OPTIONS[0]).label;
+  const urgency=(URGENCY_OPTIONS.find(item=>item.id===state.urgency)||URGENCY_OPTIONS[0]).label;
   const details=state.details.length?state.details.map(id=>cat.step3.find(item=>item.id===id).label).join(', '):'без дополнительных опций';
   const text=encodeURIComponent(`Здравствуйте! Хочу заказать бесплатный замер.
 
