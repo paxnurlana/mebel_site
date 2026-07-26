@@ -51,9 +51,6 @@
       <h1>Какой у вас класс квартиры?</h1>
       <p class="step-description">Это поможет подобрать наиболее подходящее решение по материалам и комплектации.</p>
       <div class="option-list" id="q1-list"></div>
-      <div class="step-actions">
-        <button class="btn btn-primary" id="btn-q1" disabled onclick="nextStep('q1')">Продолжить <svg><use href="#i-arrow"/></svg></button>
-      </div>
     </section>
 
     <section class="step" id="step-q2">
@@ -63,7 +60,6 @@
       <div class="option-list" id="q2-list"></div>
       <div class="step-actions">
         <button class="btn btn-secondary" onclick="prevStep('q2')"><svg><use href="#i-back"/></svg> Назад</button>
-        <button class="btn btn-primary" id="btn-q2" disabled onclick="nextStep('q2')">Продолжить <svg><use href="#i-arrow"/></svg></button>
       </div>
     </section>
 
@@ -84,7 +80,6 @@
       <div class="photo-grid" id="c1-list"></div>
       <div class="step-actions">
         <button class="btn btn-secondary" onclick="prevStep('c1')"><svg><use href="#i-back"/></svg> Назад</button>
-        <button class="btn btn-primary" id="btn-c1" disabled onclick="nextStep('c1')">Продолжить <svg><use href="#i-arrow"/></svg></button>
       </div>
     </section>
 
@@ -95,14 +90,13 @@
       <div class="photo-grid" id="c2-list"></div>
       <div class="step-actions">
         <button class="btn btn-secondary" onclick="prevStep('c2')"><svg><use href="#i-back"/></svg> Назад</button>
-        <button class="btn btn-primary" id="btn-c2" disabled onclick="nextStep('c2')">Продолжить <svg><use href="#i-arrow"/></svg></button>
       </div>
     </section>
 
     <section class="step" id="step-c3">
       <div class="step-label">Шаг 6 · Конфигуратор</div>
       <h2>Добавьте важные детали</h2>
-      <p class="step-description">Можно выбрать несколько вариантов или продолжить без дополнительных опций.</p>
+      <p class="step-description">Выберите несколько вариантов — можно отметить все подходящие детали.</p>
       <div class="photo-grid" id="c3-list"></div>
       <div class="step-actions">
         <button class="btn btn-secondary" onclick="prevStep('c3')"><svg><use href="#i-back"/></svg> Назад</button>
@@ -113,7 +107,7 @@
     <section class="step" id="step-form">
       <div class="step-label">Шаг 7 · Почти готово</div>
       <h2>Куда отправить результат?</h2>
-      <p class="step-description">Оставьте контакты — менеджер увидит вашу конфигурацию и уточнит детали проекта.</p>
+      <p class="step-description">Оставьте контакты, чтобы получить ориентир по стоимости. После этого вы перейдёте на страницу с полезными материалами и сможете написать менеджеру в WhatsApp.</p>
       <div class="form-card">
         <label for="inp-name">Ваше имя</label>
         <input id="inp-name" type="text" autocomplete="given-name" placeholder="Как вас зовут?">

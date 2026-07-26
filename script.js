@@ -6,9 +6,9 @@ const ICONS={
 };
 
 const CLASS_OPTIONS=[
-  {id:'econom',label:'Эконом',sub:'Практичные решения'},
-  {id:'comfort',label:'Комфорт',sub:'Баланс качества и бюджета'},
-  {id:'business',label:'Бизнес',sub:'Повышенный уровень материалов'},
+  {id:'econom',label:'Эконом-класс',sub:'Практичные решения'},
+  {id:'comfort',label:'Комфорт-класс',sub:'Баланс качества и бюджета'},
+  {id:'business',label:'Бизнес-класс',sub:'Повышенный уровень материалов'},
   {id:'private-house',label:'Частный дом',sub:'Комплексное решение'}
 ];
 const URGENCY_OPTIONS=[
@@ -107,7 +107,7 @@ function renderQuizOptions(){
     const button=document.createElement('button');
     button.className='option';
     button.innerHTML=`<span class="option-icon"><img src="assets/icons-3d/${item.id}.png" alt=""></span><span class="option-text"><strong>${item.label}</strong><small>${item.sub}</small></span>${checkIcon()}`;
-    button.onclick=()=>{state.cls=item.id;selectSingle(q1,button);document.getElementById('btn-q1').disabled=false};
+    button.onclick=()=>{state.cls=item.id;selectSingle(q1,button);setTimeout(()=>transition('q1','q2'),180)};
     q1.appendChild(button);
   });
   const q2=document.getElementById('q2-list');
@@ -115,7 +115,7 @@ function renderQuizOptions(){
     const button=document.createElement('button');
     button.className='option';
     button.innerHTML=`<span class="option-icon"><img src="assets/icons-3d/${item.id}.png" alt=""></span><span class="option-text"><strong>${item.label}</strong><small>${item.sub}</small></span>${checkIcon()}`;
-    button.onclick=()=>{state.urgency=item.id;selectSingle(q2,button);document.getElementById('btn-q2').disabled=false};
+    button.onclick=()=>{state.urgency=item.id;selectSingle(q2,button);setTimeout(()=>transition('q2','q3'),180)};
     q2.appendChild(button);
   });
   const q3=document.getElementById('q3-list');
@@ -153,7 +153,7 @@ function renderC1(){
   const list=document.getElementById('c1-list');list.innerHTML='';
   cat.step1.forEach(opt=>{
     const button=makePhotoOption(opt,'step1');
-    button.onclick=()=>{state.step1=opt.id;selectSingle(list,button);renderC2();document.getElementById('btn-c1').disabled=false};
+    button.onclick=()=>{state.step1=opt.id;selectSingle(list,button);setTimeout(()=>{renderC2();transition('c1','c2')},180)};
     list.appendChild(button);
   });
 }
@@ -161,7 +161,7 @@ function renderC2(){
   const list=document.getElementById('c2-list');list.innerHTML='';
   STYLES.forEach(opt=>{
     const button=makePhotoOption(opt,'step2');
-    button.onclick=()=>{state.style=opt.id;selectSingle(list,button);renderC3();document.getElementById('btn-c2').disabled=false};
+    button.onclick=()=>{state.style=opt.id;selectSingle(list,button);setTimeout(()=>{renderC3();transition('c2','c3')},180)};
     list.appendChild(button);
   });
 }
