@@ -205,17 +205,15 @@ function submitForm(){
   setTimeout(()=>{document.getElementById('step-loading').classList.add('active');startLoading()},160);
 }
 function startLoading(){
-  const rows=[...document.querySelectorAll('#loadingList div')];let index=0;
-  const timer=setInterval(()=>{
-    if(index<rows.length){rows[index].classList.add('done');index++;return}
-    clearInterval(timer);renderResult();
+  setTimeout(()=>{
+    renderResult();
     document.getElementById('step-loading').classList.remove('active');
     setTimeout(()=>{
       document.getElementById('step-result').classList.add('active');
       document.getElementById('warming').classList.add('visible');
       window.scrollTo({top:0,behavior:'smooth'});
-    },150);
-  },650);
+    },220);
+  },1900);
 }
 function renderResult(){
   const cat=CATEGORIES[state.category]||CATEGORIES.kitchen;
