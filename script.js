@@ -107,7 +107,7 @@ function renderQuizOptions(){
     const button=document.createElement('button');
     button.className='option';
     button.innerHTML=`<span class="option-icon"><img src="assets/icons-3d/${item.id}.png" alt=""></span><span class="option-text"><strong>${item.label}</strong><small>${item.sub}</small></span>${checkIcon()}`;
-    button.onclick=()=>{state.cls=item.id;selectSingle(q1,button);setTimeout(()=>transition('q1','q2'),500)};
+    button.onclick=()=>{state.cls=item.id;selectSingle(q1,button);setTimeout(()=>transition('q1','q2'),900)};
     q1.appendChild(button);
   });
   const q2=document.getElementById('q2-list');
