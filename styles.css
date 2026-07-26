@@ -95,3 +95,23 @@ body{background-image:none}
 .guarantee-section h2{margin-top:8px}.guarantee-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:32px}.guarantee-grid article{min-height:220px;padding:23px;border-radius:24px;background:#f6f2ec}.guarantee-grid article:nth-child(2){background:#e9f1e4}.guarantee-grid article:nth-child(3){background:#e6eef4}.guarantee-grid article:nth-child(4){background:#f4e6da}.guarantee-icon{display:grid;place-items:center;width:47px;height:47px;margin-bottom:30px;border-radius:15px;background:rgba(255,255,255,.75)}.guarantee-icon svg{width:24px;height:24px;fill:none;stroke:#8f572d;stroke-width:1.8}.guarantee-grid strong{display:block;font-family:Manrope,sans-serif;font-size:15px;letter-spacing:-.03em}.guarantee-grid p{margin:8px 0 0;font-size:11px;line-height:1.55}
 .final-cta-card{display:grid;grid-template-columns:1.15fr .85fr;align-items:center;overflow:hidden;border-radius:31px;background:#f5e7d8}.final-cta-card>div{padding:52px}.final-cta-card h2{font-size:clamp(31px,4vw,49px);max-width:590px}.final-cta-card p{max-width:525px;margin:17px 0 27px}.final-cta-card .btn-whatsapp{width:max-content;padding-inline:25px}.final-cta-card>img{width:100%;height:100%;min-height:360px;object-fit:contain;background:#f0eee9;padding:25px;filter:brightness(1.03) contrast(.98)}
 @media(max-width:720px){.stats,.guarantee-grid{grid-template-columns:1fr}.stats div{min-height:auto}.reference-banner,.final-cta-card{grid-template-columns:1fr}.reference-copy,.final-cta-card>div{padding:32px 24px}.reference-copy .btn-whatsapp,.final-cta-card .btn-whatsapp{width:100%}.reference-visual{min-height:245px;padding:15px 30px}.process-list:before{left:18px}.payment-section{padding:56px 0}.payment-visual{flex-direction:column}.payment-visual div{width:100%;min-height:112px}.payment-visual i.payment-lock{transform:rotate(90deg)}.final-cta-card>img{min-height:255px;padding:15px 30px}.guarantee-grid article{min-height:0}.reviews-grid{margin-right:-16px}}
+
+/* Unified palette and premium reference block */
+.stats div,.case-card .photo-placeholder,.guarantee-grid article,.review,.review-media,.payment-visual div{background:var(--card)!important}
+.stats div,.guarantee-grid article{border:1px solid var(--line)!important;box-shadow:0 8px 20px rgba(55,52,47,.06)!important}
+.review{border:1px solid var(--line)!important}
+.review-media{background:var(--soft)!important;color:var(--muted)!important}
+.payment-visual div{border:1px solid var(--line)!important}
+.guarantee-icon{background:var(--soft)!important}
+.guarantee-icon svg,.stats svg{stroke:var(--accent)!important}
+.process-item b{background:var(--soft)!important;color:var(--accent)!important}
+.reference-banner,.reference-card{display:none!important}
+.final-cta-card,.cta-copy,.cta-steps,.cta-action{background:var(--soft)!important}
+.reference-hero{margin-top:18px;padding:30px;border-radius:26px;background:#262523;color:#fff;position:relative;overflow:hidden;box-shadow:0 16px 38px rgba(38,37,35,.25)}
+.reference-hero-icon{font-size:30px;margin-bottom:14px}
+.reference-hero .section-label{color:#e0a468}
+.reference-hero h3{font-family:Manrope,sans-serif;font-weight:700;font-size:20px;line-height:1.32;letter-spacing:-.02em;margin:10px 0 12px;color:#fff}
+.reference-hero p{color:#c9c3bc;font-size:13px;line-height:1.65;margin-bottom:18px;max-width:480px}
+.reference-sources{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:20px}
+.reference-sources span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:100px;padding:7px 14px;font-size:12px;font-weight:600;color:#f3ede4}
+.reference-hero .btn-whatsapp{background:var(--wa);color:#103b21;box-shadow:0 10px 24px rgba(37,211,102,.25)}
