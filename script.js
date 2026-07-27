@@ -30,7 +30,7 @@ const CATEGORIES={
     step1:[{id:'sliding',label:'Шкаф-купе'},{id:'hinged',label:'Распашной'},{id:'built-in',label:'Встроенный'},{id:'corner',label:'Угловой'}],
     step3:[{id:'mirror',label:'Зеркало'},{id:'light',label:'Подсветка'},{id:'glass',label:'Стекло'},{id:'glossy',label:'Глянец'}]},
   'walkin-closet':{label:'Гардеробная',step1Title:'Выберите тип гардеробной',
-    step1:[{id:'open',label:'Открытая'},{id:'closed',label:'Закрытая'},{id:'combo',label:'Комбинированная'},{id:'island',label:'С островом'}],
+    step1:[{id:'open',label:'Открытая'},{id:'closed',label:'Закрытая'},{id:'island',label:'С островом'}],
     step3:[{id:'light',label:'Подсветка'},{id:'baskets',label:'Корзины'},{id:'mirror',label:'Зеркало'},{id:'iron-board',label:'Гладильная доска'}]},
   bedroom:{label:'Спальня',step1Title:'Выберите комплект',
     step1:[{id:'bed',label:'Кровать'},{id:'bed-nightstands',label:'Кровать + тумбы'},{id:'bed-wardrobe',label:'Кровать + шкаф'},{id:'full-set',label:'Полный комплект'}],
@@ -39,13 +39,13 @@ const CATEGORIES={
     step1:[{id:'wardrobe-hanger',label:'Шкаф + вешалка'},{id:'wardrobe-mirror',label:'Шкаф + зеркало'},{id:'wardrobe-cabinet',label:'Шкаф + тумба'},{id:'full-set',label:'Полный комплект'}],
     step3:[{id:'seat',label:'Сиденье'},{id:'light',label:'Подсветка'},{id:'full-mirror',label:'Зеркало в полный рост'},{id:'shoe-cabinet',label:'Обувная тумба'}]},
   vanity:{label:'Туалетный столик',step1Title:'Выберите тип столика',
-    step1:[{id:'with-mirror',label:'С зеркалом'},{id:'with-light',label:'С подсветкой'},{id:'with-drawers',label:'С ящиками'},{id:'corner',label:'Угловой'}],
+    step1:[{id:'with-mirror',label:'Базовый туалетный столик'},{id:'full-set',label:'Полная бьюти-зона'}],
     step3:[{id:'light',label:'Подсветка'},{id:'drawers',label:'Ящики'},{id:'pouf',label:'Пуф'},{id:'sockets',label:'Розетки'}]},
   bathroom:{label:'Санузел',step1Title:'Выберите тип мебели',
-    step1:[{id:'sink-cabinet',label:'Тумба с раковиной'},{id:'tall-cabinet',label:'Пенал'},{id:'mirror-cabinet',label:'Зеркальный шкаф'},{id:'full-set',label:'Полный комплект'}],
+    step1:[{id:'sink-cabinet',label:'Тумба под раковину'},{id:'full-set',label:'Полная композиция'}],
     step3:[{id:'light',label:'Подсветка'},{id:'dryer',label:'Сушилка'},{id:'basket',label:'Корзина'},{id:'glass-shelves',label:'Стеклянные полки'}]},
   'tv-zone':{label:'ТВ-зона',step1Title:'Выберите тип ТВ-зоны',
-    step1:[{id:'tv-stand',label:'Тумба под ТВ'},{id:'wall-unit',label:'Стенка'},{id:'stand-shelves',label:'Тумба + полки'},{id:'stand-wardrobe',label:'Тумба + шкаф'}],
+    step1:[{id:'tv-stand',label:'Минималистичная ТВ-зона'},{id:'full-set',label:'Полная ТВ-стена'}],
     step3:[{id:'light',label:'Подсветка'},{id:'cable-channel',label:'Кабель-канал'},{id:'glass-shelves',label:'Стеклянные полки'},{id:'stand',label:'Подставка'}]}
 };
 const PROCESS_STEPS=[
@@ -76,16 +76,22 @@ const TOTAL_STEPS=STEP_ORDER.length;
 const icon=(id)=>`<svg><use href="#${id}"></use></svg>`;
 const checkIcon=()=>`<span class="option-check">${icon('i-check')}</span>`;
 const imageFor=(category,stage,id)=>{
-  if(category!=='kitchen') return null;
-  if(stage==='step1'){
-    if(id==='straight') return 'assets/kitchen-straight-warm-minimal.png';
-    if(id==='corner') return 'assets/kitchen-corner-warm-minimal.png';
-    if(id==='p-shape') return 'assets/kitchen-u-warm-minimal.png';
-  }
-  if(stage==='step2'){
-    if(id==='modern') return 'assets/kitchen-straight-warm-minimal.png';
-    if(id==='minimal') return 'assets/kitchen-u-warm-minimal.png';
-    if(id==='classic') return 'assets/kitchen-corner-warm-minimal.png';
+  const maps={
+    kitchen:{straight:'assets/kitchen-straight.png',corner:'assets/kitchen-corner.png','p-shape':'assets/kitchen-u-shape.png',island:'assets/kitchen-island.png'},
+    wardrobe:{sliding:'assets/wardrobe-sliding.png',hinged:'assets/wardrobe-hinged.png','built-in':'assets/wardrobe-built-in.png',corner:'assets/wardrobe-corner.png'},
+    'walkin-closet':{open:'assets/walkin-open.png',closed:'assets/walkin-closed.png',island:'assets/walkin-island.png'},
+    bedroom:{bed:'assets/bed.png','bed-nightstands':'assets/bed-nightstands.png','bed-wardrobe':'assets/bed-wardrobe.png','full-set':'assets/full-bedroom.png'},
+    hallway:{'wardrobe-hanger':'assets/hallway-hanger.png','wardrobe-mirror':'assets/hallway-mirror.png','wardrobe-cabinet':'assets/hallway-bench.png','full-set':'assets/hallway-full-set.png'},
+    vanity:{'with-mirror':'assets/vanity-mirror.png','full-set':'assets/vanity-full-set.png'},
+    bathroom:{'sink-cabinet':'assets/bathroom-vanity.png','full-set':'assets/bathroom-full-set.png'},
+    'tv-zone':{'tv-stand':'assets/tv-minimal.png','full-set':'assets/tv-full-wall.png'}
+  };
+  const map=maps[category]||{};
+  if(stage==='step1' && map[id]) return map[id];
+  if(stage==='step2' && category==='kitchen'){
+    if(id==='modern') return map.straight;
+    if(id==='minimal') return map['p-shape'];
+    if(id==='classic') return map.corner;
   }
   return null;
 };
@@ -255,7 +261,7 @@ function renderWarming(){
   const portfolio=document.getElementById('portfolioCarousel');
   for(let i=1;i<=8;i++){
     const card=document.createElement('article');card.className='case-card';
-    card.innerHTML=`<img class="case-image" src="assets/kitchen-straight-warm-minimal.png" alt="Проект мебели"><div class="case-info"><strong>Индивидуальный проект</strong><span>от ${850+(i-1)*120} 000 ₸ · ${10+i} дней</span></div>`;
+    card.innerHTML=`<img class="case-image" src="assets/kitchen-straight.png" alt="Проект мебели"><div class="case-info"><strong>Индивидуальный проект</strong><span>от ${850+(i-1)*120} 000 ₸ · ${10+i} дней</span></div>`;
     portfolio.appendChild(card);
   }
   const process=document.getElementById('processSteps');
@@ -266,7 +272,7 @@ function renderWarming(){
   const reviews=document.getElementById('reviewsList');
   REVIEWS.forEach(item=>{
     const card=document.createElement('article');card.className='review';
-    card.innerHTML=`<div class="review-media"><img src="assets/kitchen-straight-warm-minimal.png" alt="Проект клиента"></div><div class="review-body"><strong>${item.who}</strong><small>${item.where}</small><p>${item.text}</p></div>`;reviews.appendChild(card);
+    card.innerHTML=`<div class="review-media"><img src="assets/kitchen-straight.png" alt="Проект клиента"></div><div class="review-body"><strong>${item.who}</strong><small>${item.where}</small><p>${item.text}</p></div>`;reviews.appendChild(card);
   });
   const faq=document.getElementById('faqList');
   FAQ.forEach(item=>{
