@@ -8,7 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css?v=20260729-8">
 </head>
 <body>
   <svg class="svg-sprite" aria-hidden="true">
@@ -41,14 +41,14 @@
     <div class="brand">МЕБЕЛЬ <span>ПРО</span></div>
     <div class="progress-row">
       <div class="progress-track"><div class="progress-fill" id="progressFill"></div></div>
-      <span class="progress-label" id="progressLabel">Шаг 1 из 7</span>
+      <span class="progress-label" id="progressLabel">Шаг 1 из 9</span>
     </div>
   </header>
 
   <main class="quiz-shell" id="quizShell">
     <section class="step active" id="step-q1">
       <div class="step-label">Шаг 1</div>
-      <h1>Какой у вас класс квартиры?</h1>
+      <h1>Для какого объекта нужна мебель?</h1>
       <p class="step-description">Это поможет подобрать наиболее подходящее решение по материалам и комплектации.</p>
       <div class="option-list" id="q1-list"></div>
     </section>
@@ -97,15 +97,35 @@
       <div class="step-label">Шаг 6 · Конфигуратор</div>
       <h2>Добавьте важные детали</h2>
       <p class="step-description">Выберите несколько вариантов — можно отметить все подходящие детали.</p>
-      <div class="photo-grid" id="c3-list"></div>
+      <div class="extras-grid" id="c3-list"></div>
       <div class="step-actions">
         <button class="btn btn-secondary" onclick="prevStep('c3')"><svg><use href="#i-back"/></svg> Назад</button>
         <button class="btn btn-primary" onclick="nextStep('c3')">Продолжить <svg><use href="#i-arrow"/></svg></button>
       </div>
     </section>
 
+    <section class="step" id="step-stage">
+      <div class="step-label">Шаг 7 · Готовность помещения</div>
+      <h2>На каком этапе сейчас находится помещение?</h2>
+      <p class="step-description">Это поможет правильно спланировать замер, проектирование и начало производства.</p>
+      <div class="option-list stage-list" id="stage-list"></div>
+      <div class="step-actions single-back">
+        <button class="btn btn-secondary" onclick="prevStep('stage')"><svg><use href="#i-back"/></svg> Назад</button>
+      </div>
+    </section>
+
+    <section class="step" id="step-package">
+      <div class="step-label">Шаг 8 · Комплектация</div>
+      <h2>Выберите уровень комплектации</h2>
+      <p class="step-description">Материалы и фурнитура влияют на внешний вид, срок службы и ориентировочную стоимость проекта.</p>
+      <div class="package-grid" id="package-list"></div>
+      <div class="step-actions single-back">
+        <button class="btn btn-secondary" onclick="prevStep('package')"><svg><use href="#i-back"/></svg> Назад</button>
+      </div>
+    </section>
+
     <section class="step" id="step-form">
-      <div class="step-label">Шаг 7 · Почти готово</div>
+      <div class="step-label">Шаг 9 · Почти готово</div>
       <h2>Куда отправить результат?</h2>
       <p class="step-description">Оставьте контакты, чтобы получить ориентир по стоимости. После этого вы перейдёте на страницу с полезными материалами и сможете написать менеджеру в WhatsApp.</p>
       <div class="form-card">
@@ -146,7 +166,7 @@
       <div class="result-badges" id="resultParams"></div>
       <div class="result-details" id="resultDetails"></div>
             <div class="result-cta-card"><div class="result-cta-copy"><span>Ориентировочная стоимость</span><strong id="priceValue">от 800 000 до 1 500 000 ₸</strong><p id="priceHeadline">Предварительный диапазон. Точную стоимость определим после замера, проекта и согласования материалов.</p></div><a class="btn-whatsapp" id="waMainBtn" href="#" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Заказать бесплатный замер</a></div>
-      <div class="reference-hero"><div class="reference-hero-art"><div class="reference-frame"><span class="reference-frame-top">@mebel.pro</span><div class="reference-furniture">✦</div><span class="reference-frame-caption">идея, которую хочется повторить</span></div></div><span class="section-label">Есть референс?</span><h3>Мы реализуем любую вашу фантазию</h3><p>Нашли красивую мебель в интернете — просто скиньте фото. Адаптируем идею под размеры вашей комнаты, материалы и реальный бюджет.</p><a class="btn-whatsapp" href="https://wa.me/77766387416?text=Здравствуйте!%20Хочу%20прислать%20референс%20мебели" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Отправить референс менеджеру</a></div>
+      <div class="reference-hero"><div class="reference-hero-art"><div class="reference-stack"><div class="reference-stack-card reference-stack-card--1"><img src="assets/styles/style-minimal.webp" alt=""></div><div class="reference-stack-card reference-stack-card--2"><img src="assets/kitchen-island.webp" alt=""></div><div class="reference-stack-card reference-stack-card--3"><img src="assets/styles/style-classic.webp" alt=""></div><div class="reference-stack-card reference-stack-card--4"><img src="assets/wardrobe-built-in.webp" alt=""></div><div class="reference-frame"><span class="reference-frame-top">@mebel.pro</span><div class="reference-furniture"><img src="assets/styles/style-modern.webp" alt="Современный интерьер с мебелью"></div><span class="reference-frame-caption">идеи, которые хочется объединить</span></div></div></div><span class="section-label">Есть референс?</span><h3>Мы реализуем любую вашу фантазию</h3><p>Нашли красивую мебель в интернете — просто скиньте фото. Адаптируем идею под размеры вашей комнаты, материалы и реальный бюджет.</p><a class="btn-whatsapp" href="https://wa.me/77766387416?text=Здравствуйте!%20Хочу%20прислать%20референс%20мебели" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Отправить референс менеджеру</a></div>
     </section>
   <aside class="trust-dock" id="trustDock">
     <div class="trust-message">
@@ -187,6 +207,6 @@
         <section class="guarantee-section content-section"><span class="section-label">Финальная уверенность</span><h2>Мебель, которой хочется пользоваться каждый день</h2><div class="guarantee-grid"><article><span class="guarantee-icon"><svg><use href="#i-check"/></svg></span><strong>Собираем под ваш дом</strong><p>Учитываем планировку, привычки и детали пространства.</p></article><article><span class="guarantee-icon"><svg><use href="#i-shield"/></svg></span><strong>Фиксируем договором</strong><p>Сроки, материалы и стоимость понятны ещё до старта.</p></article><article><span class="guarantee-icon"><svg><use href="#i-layers"/></svg></span><strong>Контролируем качество</strong><p>Проверяем мебель до доставки и после монтажа.</p></article><article><span class="guarantee-icon"><svg><use href="#i-house"/></svg></span><strong>Остаёмся на связи</strong><p>Помогаем и после установки, если появятся вопросы.</p></article></div></section>            <section class="final-cta content-section"><div class="final-cta-card"><div><span class="section-label">ГОТОВЫ НАЧАТЬ?</span><h2>Мебель, которую вы себе представляли — но не могли найти</h2><p>Напишите нам — согласуем бесплатный замер в ближайшие дни.</p><a class="btn-whatsapp" href="https://wa.me/77766387416" target="_blank" rel="noopener"><svg><use href="#i-whatsapp"/></svg> Написать в WhatsApp</a></div></div></section>
   </div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=20260729-5"></script>
 </body>
 </html>
