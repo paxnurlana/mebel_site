@@ -195,12 +195,21 @@ const PROCESS_STEPS = [
   {time:'День 15',title:'Доставка и монтаж',text:'Устанавливаем мебель и проверяем каждый узел вместе с вами.'}
 ];
 
+const PORTFOLIO_PROJECTS = [
+  {image:'assets/portfolio/project-kitchen-light.webp',title:'Светлая кухня',meta:'Алматы · 14 дней'},
+  {image:'assets/portfolio/project-kitchen-island.webp',title:'Кухня с островом',meta:'Алматы · 16 дней'},
+  {image:'assets/portfolio/project-wardrobe.webp',title:'Встроенный шкаф',meta:'Алматы · 11 дней'},
+  {image:'assets/portfolio/project-walkin.webp',title:'Гардеробная',meta:'Алматы · 15 дней'},
+  {image:'assets/portfolio/project-bedroom.webp',title:'Мебель для спальни',meta:'Алматы · 17 дней'},
+  {image:'assets/portfolio/project-hallway.webp',title:'Прихожая',meta:'Алматы · 12 дней'}
+];
+
 const REVIEWS = [
-  {who:'Айгерим Т.',where:'ЖК Green City, Алматы',text:'Кухня получилась ровно как в проекте. Материалы показали заранее, а стоимость после согласования не менялась.'},
-  {who:'Мурат С.',where:'Медеуский район, Алматы',text:'Гардеробную спроектировали под нестандартную нишу. Всё встало точно, монтаж закончили аккуратно и без задержек.'},
-  {who:'Дана К.',where:'Бостандыкский район, Алматы',text:'Понятная схема оплаты сняла опасения. После установки всё спокойно проверили и только потом внесли оставшуюся сумму.'},
-  {who:'Алия Н.',where:'ЖК 4YOU, Алматы',text:'Прислала референс из Pinterest, а дизайнер адаптировал его под нашу квартиру. Особенно понравилось, как продумали хранение.'},
-  {who:'Ерлан М.',where:'Наурызбайский район, Алматы',text:'Заказывали прихожую и шкафы в спальню. Замер, договор и монтаж прошли понятно, результат выглядит цельно и аккуратно.'}
+  {who:'Айгерим Т.',where:'ЖК Green City, Алматы',image:'assets/reviews/review-aigerim.webp',text:'Кухня получилась ровно как в проекте. Материалы показали заранее, а стоимость после согласования не менялась.'},
+  {who:'Мурат С.',where:'Медеуский район, Алматы',image:'assets/reviews/review-murat.webp',text:'Гардеробную спроектировали под нестандартную нишу. Всё встало точно, монтаж закончили аккуратно и без задержек.'},
+  {who:'Дана К.',where:'Бостандыкский район, Алматы',image:'assets/reviews/review-dana.webp',text:'Понятная схема оплаты сняла опасения. После установки всё спокойно проверили и только потом внесли оставшуюся сумму.'},
+  {who:'Алия Н.',where:'ЖК 4YOU, Алматы',image:'assets/reviews/review-aliya.webp',text:'Прислала референс из Pinterest, а дизайнер адаптировал его под нашу квартиру. Особенно понравилось, как продумали хранение.'},
+  {who:'Ерлан М.',where:'Наурызбайский район, Алматы',image:'assets/reviews/review-erlan.webp',text:'Заказывали прихожую и шкафы в спальню. Замер, договор и монтаж прошли понятно, результат выглядит цельно и аккуратно.'}
 ];
 
 const FAQ = [
@@ -542,6 +551,71 @@ function transition(fromKey,toKey){
   },120);
 }
 
+function buildLeadMessage(){
+  const cat = CATEGORIES[state.category];
+  const form = cat.step1.find(item => item.id === state.step1);
+  const style = STYLES.find(item => item.id === state.style);
+  const selectedPackage = PACKAGE_OPTIONS.find(item => item.id === state.package);
+  const cls = CLASS_OPTIONS.find(item => item.id === state.cls).label;
+  const urgency = URGENCY_OPTIONS.find(item => item.id === state.urgency).label;
+  const stage = STAGE_OPTIONS.find(item => item.id === state.stage).label;
+  const details = state.details.length
+    ? state.details.map(id => cat.step3.find(item => item.id === id).label).join(', ')
+    : 'без дополнительных опций';
+  const variantLabel = state.category === 'kitchen'
+    ? 'Планировка'
+    : ['bedroom', 'hallway'].includes(state.category)
+      ? 'Комплект'
+      : 'Тип';
+  const urgencyText = {
+    urgent: 'Мебель нужна через 1–2 недели',
+    month: 'Мебель нужна в течение месяца',
+    quarter: 'Мебель нужна в течение 2–3 месяцев',
+    looking: 'Сроки пока уточняю'
+  }[state.urgency] || urgency;
+  const stageText = {
+    ready: 'Помещение уже готово к замеру',
+    renovation: 'Сейчас в помещении идёт ремонт',
+    'keys-soon': 'Ключи получаем в ближайшее время',
+    planning: 'Пока только планируем проект'
+  }[state.stage] || stage;
+
+  return `Новая заявка с сайта
+
+Имя: ${state.name}
+Телефон: ${state.phone}
+
+Мебель: ${cat.label}
+${variantLabel}: ${form.label}
+Стиль: ${style.id === 'custom' ? 'Свой вариант / по референсу' : style.label}
+Дополнительно: ${details}
+Комплектация: ${selectedPackage.label}
+
+${cls}
+${urgencyText}
+${stageText}`;
+}
+
+async function sendTelegramLead(){
+  if(state.telegramLeadSent) return;
+  state.telegramLeadSent = true;
+  try{
+    const response = await fetch('https://api.telegram.org/bot8794824885:AAHFDl-HrVlQ08B5eif4Y4Er7OghXNkOkqA/sendMessage',{
+      method:'POST',
+      headers:{'Content-Type':'application/json'},
+      body:JSON.stringify({
+        chat_id:'-1004489623704',
+        text:buildLeadMessage()
+      }),
+      keepalive:true
+    });
+    if(!response.ok) throw new Error(`Telegram API: ${response.status}`);
+  }catch(error){
+    state.telegramLeadSent = false;
+    console.error('Не удалось отправить заявку в Telegram',error);
+  }
+}
+
 function submitForm(){
   const nameInput = document.getElementById('inp-name');
   const phoneInput = document.getElementById('inp-phone');
@@ -557,6 +631,7 @@ function submitForm(){
   if(!nameOk || !phoneOk) return;
   state.name = name;
   state.phone = phone;
+  sendTelegramLead();
   document.getElementById('quizShell').classList.add('result-mode');
   document.getElementById('step-form').classList.remove('active');
   document.getElementById('topbar').style.display = 'none';
@@ -614,38 +689,23 @@ function renderResult(){
       ? 'от 800 000 до 1 500 000 ₸'
       : 'от 800 000 до 3 000 000 ₸';
 
-  const cls = CLASS_OPTIONS.find(item => item.id === state.cls).label;
-  const urgency = URGENCY_OPTIONS.find(item => item.id === state.urgency).label;
-  const stage = STAGE_OPTIONS.find(item => item.id === state.stage).label;
-  const details = state.details.length
-    ? state.details.map(id => cat.step3.find(item => item.id === id).label).join(', ')
-    : 'без дополнительных опций';
-  const message = encodeURIComponent(`Здравствуйте! Хочу заказать бесплатный замер.
+  const message = encodeURIComponent(`Здравствуйте! Хочу заказать замер.
 
-Имя: ${state.name}
-Телефон: ${state.phone}
-
-Мебель: ${cat.label}
-Класс объекта: ${cls}
-Срочность: ${urgency}
-Этап помещения: ${stage}
-
-Конфигуратор:
-- Форма: ${form.label}
-- Стиль: ${style.id === 'custom' ? 'по моему референсу' : style.label}
-- Комплектация: ${selectedPackage.label}
-- Детали: ${details}`);
-  document.getElementById('waMainBtn').href = `https://wa.me/77766387416?text=${message}`;
+${buildLeadMessage().replace('Новая заявка с сайта\n\n','')}`);
+  const whatsappUrl = `https://wa.me/77084148915?text=${message}`;
+  document.querySelectorAll('a.btn-whatsapp').forEach(link => {
+    link.href = whatsappUrl;
+  });
 }
 
 function renderWarming(){
   const portfolio = document.getElementById('portfolioCarousel');
-  for(let i = 1; i <= 8; i++){
+  PORTFOLIO_PROJECTS.forEach(item => {
     const card = document.createElement('article');
     card.className = 'case-card';
-    card.innerHTML = `<img class="case-image" src="assets/kitchen-straight.webp" alt="Проект мебели"><div class="case-info"><strong>Индивидуальный проект</strong><span>от ${850 + (i - 1) * 120} 000 ₸ · ${10 + i} дней</span></div>`;
+    card.innerHTML = `<img class="case-image" src="${item.image}" alt="${item.title}" loading="lazy" decoding="async"><div class="case-info"><strong>${item.title}</strong><span>${item.meta}</span></div>`;
     portfolio.appendChild(card);
-  }
+  });
 
   const process = document.getElementById('processSteps');
   PROCESS_STEPS.forEach((item,index) => {
@@ -659,7 +719,7 @@ function renderWarming(){
   REVIEWS.forEach(item => {
     const card = document.createElement('article');
     card.className = 'review';
-    card.innerHTML = `<div class="review-media"><img src="assets/kitchen-straight.webp" alt="Проект клиента"></div><div class="review-body"><strong>${item.who}</strong><small>${item.where}</small><p>${item.text}</p></div>`;
+    card.innerHTML = `<div class="review-media"><img src="${item.image}" alt="Проект клиента ${item.who}" loading="lazy" decoding="async"></div><div class="review-body"><strong>${item.who}</strong><small>${item.where}</small><p>${item.text}</p></div>`;
     reviews.appendChild(card);
   });
 
